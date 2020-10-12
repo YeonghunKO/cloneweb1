@@ -1,0 +1,117 @@
+@import "_variables";
+@import "reset";
+
+// reset 파일은 html 을 표준화하는데 기여하는 파일이라서 import 해준다.
+
+* {
+    box-sizing: border-box; 
+    //padding 이랑 border 가 박스안에 담기도록 함. 
+    //두가지 element의 크기를 균일하게 할때 사용되는 property이다.
+    // *는 universal selector 로 전체 스타일에 영향을 주는 선택자이다.
+}
+
+body {
+    height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: $white;
+}
+
+header {
+    position: fixed; //header 가 fixed 되면 main의 margin-left 에 공간을 줘야 겹치지 않게 된다. 
+    top:0;
+    left:0;
+    width: $fixedWidth; // 페이지 설명 header가 왼쪽에 위치하도록 하게 함.
+    height: 100%;
+    padding: 5vh 0 72px 72px; //위에서 부터 오른쪽 방향으로 설정
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: $red;
+    h1 {
+        font-size: 85px;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        width: 50%;
+    }
+    h3 {
+        margin-top: 40px;
+        font-size: 30px;
+        margin-bottom: 40px;
+        // letter-spacing: 3px;
+    }
+    h3,p {
+        width: 70%;
+        line-height: 1.2; // 줄의 높이를 설정. 말그대로.
+        text-align: justify;  // 텍스트 위치 설정.        
+    }
+    p {
+        font-weight: 330;
+        font-size: 22px;
+        margin-bottom: 40px;
+    }
+    nav {
+        width: 80%;
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            li {
+                cursor: pointer;
+                margin-right: 12px;
+                font-size: 20px;
+                opacity: 0.5; //투명도
+                padding-bottom: 5px; //줄간격이 늘어남. 모든 li에 적용하니깐
+                border-bottom: 2px solid rgba(0,0,0,0.5);
+                margin-bottom: 20px;
+                color:  #616165;
+                &:hover {
+                    opacity:1; //마우스를 갖다대니깐 더 진해짐. 하이라이트 효과. 이럴때 쓰는 구나!
+                }
+            }
+        }
+    }
+}
+
+main {
+    background-color: $red;
+    margin-left: $fixedWidth;
+    .movie {
+        background: linear-gradient(
+            to bottom, 
+            rgba(0, 0, 0, 0.1) 5%,
+            transparent,
+            transparent,
+            transparent,
+            transparent           
+        ) // 아래로 갈수록 더 옅어짐 배경색이. .movie 맨위에서 5%가량에 살짝 검정색깔이 들어가게 함. 그리고 밑으로는 점점 투명하게 변한다.
+        $red;
+       height: 100vh; 
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       color: white;
+       .wrapper {
+           width:80%;
+           display: flex;
+           flex-direction: column;
+           .movie_header {
+               display: flex;
+               justify-content: space-between;
+               align-items: flex-end;
+               margin-bottom: 25px;
+               h4{
+                   font-size: 32px;
+                   text-transform: uppercase;
+               }
+               h5 {
+                   letter-spacing: 2px;
+               }              
+           }
+       }
+       img {
+           width: 100%;
+           box-shadow: 0 80px 80px -80px #000, 0 0 12px rgba(0, 0, 0, 0.06),
+           inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+       }// 영상뒷면에 그림자가 지게 하는 효과. horror 사이트 검색을 통해 찾아낸 효과.
+
+    }
+}
